@@ -3,7 +3,7 @@
 public class PlayerController : MonoBehaviour {
 
     [SerializeField]
-    private Joystick _joystick;
+    private Joystick _joystick = null;
 
     public Vector2 CurrentInput { get; set; }
 

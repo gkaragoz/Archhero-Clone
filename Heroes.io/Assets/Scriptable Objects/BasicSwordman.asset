@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2554d65e8b695314f830c80802247b6e, type: 3}
   m_Name: BasicSwordman
   m_EditorClassIdentifier: 
-  isPlayer: 0
-  _name: "G\xF6khan"
-  _maxHealth: 100
+  _name: Basic Swordman
+  _prefab: {fileID: 8335044306195372946, guid: 8076c3fd01665904393324dc42ff3a8c, type: 3}
   _currentHealth: 100
-  _healthRegen: 1
+  _maxHealth: 100
+  _shootAngle: 45
+  _attackRate: 1
+  _maxAttackRate: 0.25
   _attackDamage: 5
-  _attackSpeed: 1
+  _minAttackDamage: 1
   _movementSpeed: 3
-  _rotationSpeed: 1.75
-  _attackRange: 1
-  _level: 0
-  _maxExperience: 0
+  _level: 1
+  _maxExperience: 100
   _currentExperience: 0

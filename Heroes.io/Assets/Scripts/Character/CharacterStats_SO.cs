@@ -5,29 +5,36 @@ public class CharacterStats_SO : ScriptableObject {
 
     #region Properties
 
-    public bool isPlayer = false;
+    [SerializeField]
+    private string _name = "Character";
 
     [SerializeField]
-    private string _name = string.Empty;
+    private GameObject _prefab;
 
+    // Health
     [SerializeField]
-    private int _maxHealth = 0;
+    private float _currentHealth;
     [SerializeField]
-    private int _currentHealth = 0;
-    [SerializeField]
-    private float _healthRegen = 0;
+    private float _maxHealth;
 
+    // Attack
     [SerializeField]
-    private int _attackDamage = 5;
+    [Range(1, 89)]
+    private float _shootAngle = 45f;
     [SerializeField]
-    private float _attackSpeed = 1.0f;
+    private float _attackRate = 1f;
     [SerializeField]
-    private float _movementSpeed = 3;
+    private float _maxAttackRate = 0.25f;
     [SerializeField]
-    private float _rotationSpeed = 1.75f;
+    private float _attackDamage = 50f;
     [SerializeField]
-    private float _attackRange = 1;
+    private float _minAttackDamage = 1f;
 
+    // Movement
+    [SerializeField]
+    private float _movementSpeed = 5f;
+
+    // Levelling
     [SerializeField]
     private int _level = 0;
     [SerializeField]
@@ -35,128 +42,67 @@ public class CharacterStats_SO : ScriptableObject {
     [SerializeField]
     private int _currentExperience = 0;
 
-    #endregion
-
-    #region Getter Setters
-
     public string Name {
-        get {
-            return _name;
-        }
-
-        set {
-            _name = value;
-        }
+        get { return _name; }
+        set { _name = value; }
     }
 
-    public int MaxHealth {
-        get {
-            return _maxHealth;
-        }
-
-        set {
-            _maxHealth = value;
-        }
+    public GameObject Prefab {
+        get { return _prefab; }
+        set { _prefab = value; }
     }
 
-    public int CurrentHealth {
-        get {
-            return _currentHealth;
-        }
-
-        set {
-            _currentHealth = value;
-        }
+    public float CurrentHealth {
+        get { return _currentHealth; }
+        set { _currentHealth = value; }
     }
 
-    public float HealthRegen {
-        get {
-            return _healthRegen;
-        }
-
-        set {
-            _healthRegen = value;
-        }
+    public float MaxHealth {
+        get { return _maxHealth; }
+        set { _maxHealth = value; }
     }
 
-    public int AttackDamage {
-        get {
-            return _attackDamage;
-        }
-
-        set {
-            _attackDamage = value;
-        }
+    public float ShootAngle {
+        get { return _shootAngle; }
+        set { _shootAngle = value; }
     }
 
-    public float AttackSpeed {
-        get {
-            return _attackSpeed;
-        }
-
-        set {
-            _attackSpeed = value;
-        }
+    public float AttackRate {
+        get { return _attackRate; }
+        set { _attackRate = value; }
     }
 
-    public float AttackRange {
-        get {
-            return _attackRange;
-        }
+    public float MaxAttackRate {
+        get { return _maxAttackRate; }
+    }
 
-        set {
-            _attackRange = value;
-        }
+    public float AttackDamage {
+        get { return _attackDamage; }
+        set { _attackDamage = value; }
+    }
+
+    public float MinAttackDamage {
+        get { return _minAttackDamage; }
     }
 
     public float MovementSpeed {
-        get {
-            return _movementSpeed;
-        }
-
-        set {
-            _movementSpeed = value;
-        }
-    }
-
-    public float RotationSpeed {
-        get {
-            return _rotationSpeed;
-        }
-
-        set {
-            _rotationSpeed = value;
-        }
+        get { return _movementSpeed; }
+        set { _movementSpeed = value; }
     }
 
     public int Level {
-        get {
-            return _level;
-        }
-
-        set {
-            _level = value;
-        }
+        get { return _level; }
+        set { _level = value; }
     }
 
     public int MaxExperience {
-        get {
-            return _maxExperience;
-        }
-
-        set {
-            _maxExperience = value;
-        }
+        get { return _maxExperience; }
+        set { _maxExperience = value; }
     }
 
     public int CurrentExperience {
-        get {
-            return _currentExperience;
-        }
-
-        set {
-            _currentExperience = value;
-        }
+        get { return _currentExperience; }
+        set { _currentExperience = value; }
     }
 
     #endregion

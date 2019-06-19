@@ -8,8 +8,7 @@ public class CharacterStats : MonoBehaviour {
 
     [Header("Debug")]
     [SerializeField]
-    [Utils.ReadOnly]
-    private CharacterStats_SO _character;
+    private CharacterStats_SO _character = null;
 
     #region Initializations
 
@@ -21,87 +20,67 @@ public class CharacterStats : MonoBehaviour {
 
     #endregion
 
-    #region Stat Increasers
+    #region Increasers
 
-    public void ApplyHealth(int healthAmount) {
-        if ((_character.CurrentHealth + healthAmount) > _character.MaxHealth) {
-            _character.CurrentHealth = _character.MaxHealth;
-        } else {
-            _character.CurrentHealth += healthAmount;
+    public void IncreaseHealth(float value) {
+        if (GetCurrentHealth() + value >= GetMaxHealth()) {
+            return;
+        }
+
+        _character.CurrentHealth += value;
+    }
+
+    public void IncreaseAttackRate(float value) {
+        _character.AttackRate -= value;
+
+        if (GetAttackRate() <= GetMaxAttackRate()) {
+            _character.AttackRate = GetMaxAttackRate();
         }
     }
 
-    public void AddAttackDamage(int damageAmount) {
-        _character.AttackDamage += damageAmount;
-    }
-
-    public void AddAttackSpeed(float speedAmount) {
-        _character.AttackSpeed += speedAmount;
-    }
-
-    public void AddAttackRange(float rangeAmount) {
-        _character.AttackRange += rangeAmount;
-    }
-
-    public void AddExp(int expAmount) {
-        if (_character.CurrentExperience + expAmount >= _character.MaxExperience) {
-            int needExpAmount = _character.MaxExperience - _character.CurrentExperience;
-            int remainingExpAmount = expAmount - needExpAmount;
-
-            LevelUp();
-
-            if (remainingExpAmount > 0) {
-                AddExp(remainingExpAmount);
-            } else {
-                _character.CurrentExperience += needExpAmount;
-            }
-        } else {
-            _character.CurrentExperience += expAmount;
-        }
+    public void IncreaseAttackDamage(float value) {
+        _character.AttackDamage += value;
     }
 
     #endregion
 
-    #region Stat Reducers
+    #region Decreasers
 
-    public void TakeDamage(int amount) {
-        _character.CurrentHealth -= amount;
+    public void DecreaseHealth(float value) {
+        _character.CurrentHealth -= value;
 
-        if (_character.CurrentHealth <= 0) {
+        if (GetCurrentHealth() <= 0) {
             _character.CurrentHealth = 0;
         }
     }
 
-    public void ReduceAttackDamage(int damageAmount) {
-        _character.AttackDamage -= damageAmount;
-
-        if (_character.AttackDamage <= 0) {
-            _character.AttackDamage = 0;
-        }
+    public void DecreaseAttackRate(float value) {
+        _character.AttackRate += value;
     }
 
-    public void ReduceAttackSpeed(float speedAmount) {
-        _character.AttackSpeed -= speedAmount;
+    public void DecreaseAttackDamage(float value) {
+        _character.AttackDamage -= value;
 
-        if (_character.AttackSpeed <= 0) {
-            _character.AttackSpeed = 0;
+        if (GetAttackDamage() <= GetMinAttackDamage()) {
+            _character.AttackDamage = GetMinAttackDamage();
         }
+
     }
 
-    public void ReduceAttackRange(float rangeAmount) {
-        _character.AttackRange -= rangeAmount;
+    #endregion
 
-        if (_character.AttackRange <= 0) {
-            _character.AttackRange = 0;
+    #region Setters
+
+    public void SetCurrentHealth(float amount) {
+        if (amount <= 0) {
+            _character.CurrentHealth = 0;
+            return;
         }
-    }
-
-    public void LooseExp(int expAmount) {
-        _character.CurrentExperience -= expAmount;
-
-        if (_character.CurrentExperience <= 0) {
-            _character.CurrentExperience = 0;
+        if (amount > GetMaxHealth()) {
+            _character.MaxHealth = amount;
         }
+
+        _character.CurrentHealth = amount;
     }
 
     #endregion
@@ -109,39 +88,43 @@ public class CharacterStats : MonoBehaviour {
     #region Reporters
 
     public string GetName() {
-        return _character.Name;
+        return _characterDefinition_Template.Name;
     }
 
-    public bool IsDeath() {
-        return _character.CurrentHealth <= 0;
+    public GameObject GetPrefab() {
+        return _characterDefinition_Template.Prefab;
     }
 
-    public int GetMaxHealth() {
-        return _character.MaxHealth;
-    }
-
-    public int GetCurrentHealth() {
+    public float GetCurrentHealth() {
         return _character.CurrentHealth;
     }
 
-    public int GetAttackDamage() {
-        return _character.AttackDamage;
+    public float GetMaxHealth() {
+        return _character.MaxHealth;
     }
 
-    public float GetAttackSpeed() {
-        return _character.AttackSpeed;
+    public float GetShootAngle() {
+        return _character.ShootAngle;
+    }
+
+    public float GetAttackRate() {
+        return _character.AttackRate;
+    }
+
+    public float GetMaxAttackRate() {
+        return _character.MaxAttackRate;
+    }
+
+    public float GetAttackDamage() {
+        return _character.AttackRate;
+    }
+
+    public float GetMinAttackDamage() {
+        return _character.MinAttackDamage;
     }
 
     public float GetMovementSpeed() {
         return _character.MovementSpeed;
-    }
-
-    public float GetRotationSpeed() {
-        return _character.RotationSpeed;
-    }
-
-    public float GetAttackRange() {
-        return _character.AttackRange;
     }
 
     public int GetLevel() {
@@ -158,11 +141,15 @@ public class CharacterStats : MonoBehaviour {
 
     #endregion
 
+    #region Custom Methods
+
     private void LevelUp() {
         _character.Level++;
 
         _character.CurrentExperience = 0;
         _character.MaxExperience = 10 + (_character.Level * 10) + (int)Mathf.Pow(_character.Level + 1, 3);
     }
+
+    #endregion
 
 }
