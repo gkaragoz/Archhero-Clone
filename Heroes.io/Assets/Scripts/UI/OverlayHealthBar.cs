@@ -10,7 +10,7 @@ public class OverlayHealthBar : Menu {
 
     private Camera _camera;
 
-    private CharacterController _characterController;
+    private UnityEngine.CharacterController _characterController;
 
     private void Awake() {
         _camera = Camera.main;
@@ -25,7 +25,7 @@ public class OverlayHealthBar : Menu {
         transform.position = _camera.WorldToScreenPoint(_characterController.transform.position + Vector3.up * _positionOffset);
     }
 
-    public void Initialize(CharacterController characterController) {
+    public void Initialize(UnityEngine.CharacterController characterController) {
         this._characterController = characterController;
 
         //_characterController.onDead += OnDead;
@@ -47,7 +47,7 @@ public class OverlayHealthBar : Menu {
         //_slider.value = _characterController.CurrentHealth;
     }
 
-    private void OnDead(CharacterController character) {
+    private void OnDead(UnityEngine.CharacterController character) {
         Hide();
     }
 
