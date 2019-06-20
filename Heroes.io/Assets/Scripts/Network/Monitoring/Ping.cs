@@ -8,7 +8,7 @@ public class Ping : MonoBehaviour {
     private string _pingMessage = "Ping: ";
 
     [SerializeField]
-    private TextMeshProUGUI _txtPing;
+    private TextMeshProUGUI _txtPing = null;
 
     private int _cache = -1;
 

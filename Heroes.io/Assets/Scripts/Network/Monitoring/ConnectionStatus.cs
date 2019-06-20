@@ -8,7 +8,7 @@ public class ConnectionStatus : MonoBehaviour {
     private string _connectionStatusMessage = "Connection Status: ";
 
     [SerializeField]
-    private TextMeshProUGUI _txtConnectionStatus;
+    private TextMeshProUGUI _txtConnectionStatus = null;
 
     private void Update() {
         _txtConnectionStatus.text = _connectionStatusMessage + PhotonNetwork.NetworkClientState;
