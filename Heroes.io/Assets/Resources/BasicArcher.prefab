@@ -2962,7 +2962,7 @@ GameObject:
   - component: {fileID: 5213764052161211035}
   - component: {fileID: 1656511175253090168}
   m_Layer: 0
-  m_Name: TT_Scout
+  m_Name: BasicArcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3058,7 +3058,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2c330fb1c4d3ab64c817f0a9ddd90061, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
