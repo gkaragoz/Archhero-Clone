@@ -17,14 +17,14 @@ public class CharacterMotor : MonoBehaviour {
 
     private void Awake() {
         _characterStats = GetComponent<CharacterStats>();
-        _rb = GetComponentInChildren<Rigidbody>();
-        _photonView = GetComponentInParent<PhotonView>();
+        _rb = GetComponent<Rigidbody>();
+        _photonView = GetComponent<PhotonView>();
     }
 
     private void FixedUpdate() {
         if (!_photonView.IsMine) {
             ProcessRemoteInput();
-            ProcessRemoteRotation();
+            //ProcessRemoteRotation();
         }
     }
 

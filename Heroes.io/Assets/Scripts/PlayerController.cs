@@ -53,6 +53,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void DestroyJoystick() {
+        Destroy(_joystick.gameObject);
+    }
+
     public Vector3 GetCurrentPosition() {
         return _characterController.GetCurrentPosition();
     }

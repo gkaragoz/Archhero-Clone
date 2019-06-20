@@ -13,6 +13,7 @@ public class PlayerNetwork : MonoBehaviourPun, IPunObservable {
         //destroy the controller if the player is not controlled by me
         if (!photonView.IsMine && _playerController != null) {
             _playerController.IsRemotePlayer = true;
+            _playerController.DestroyJoystick();
         }
     }
 
