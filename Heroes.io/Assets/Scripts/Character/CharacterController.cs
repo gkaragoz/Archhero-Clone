@@ -10,6 +10,9 @@ public class CharacterController : MonoBehaviour {
     private CharacterAttack _characterAttack;
     private CharacterStats _characterStats;
 
+    public bool IsMoving { get { return _characterMotor.IsMoving; } }
+    public float VelocityMagnitude { get { return _characterMotor.VelocityMagnitude; } }
+
     private void Awake() {
         _characterMotor = GetComponent<CharacterMotor>();
         _characterAttack = GetComponent<CharacterAttack>();

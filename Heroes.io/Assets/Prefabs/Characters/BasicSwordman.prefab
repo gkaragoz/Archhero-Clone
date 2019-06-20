@@ -535,6 +535,7 @@ GameObject:
   - component: {fileID: 8032420416814268548}
   - component: {fileID: 7011659152875441428}
   - component: {fileID: 2479586320231552264}
+  - component: {fileID: 3811134591205177051}
   m_Layer: 0
   m_Name: BasicSwordman
   m_TagString: Enemy
@@ -643,6 +644,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aea7dcbc0cb2bf43810743d0134504c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3811134591205177051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8335044306195372946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f0cbe37865fb446bb5de8fab164179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 8639800680094981483}
 --- !u!1001 &4525305207861193875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -843,6 +857,12 @@ PrefabInstance:
 --- !u!4 &8639800680102130663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 438990, guid: d48bbc2c6b551b448a18345d75c6b7f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8639800680102281513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8639800680094981483 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9542722, guid: d48bbc2c6b551b448a18345d75c6b7f9,
     type: 3}
   m_PrefabInstance: {fileID: 8639800680102281513}
   m_PrefabAsset: {fileID: 0}

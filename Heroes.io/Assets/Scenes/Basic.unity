@@ -1205,5 +1205,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3811134591205177051, guid: 8076c3fd01665904393324dc42ff3a8c,
+        type: 3}
+      propertyPath: _playerController
+      value: 
+      objectReference: {fileID: 1194676032}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8076c3fd01665904393324dc42ff3a8c, type: 3}

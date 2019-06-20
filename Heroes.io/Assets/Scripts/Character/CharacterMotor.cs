@@ -6,6 +6,9 @@ public class CharacterMotor : MonoBehaviour {
     private CharacterStats _characterStats;
     private Rigidbody _rb;
 
+    public bool IsMoving { get { return _rb.velocity.magnitude > 0f ? true : false; } }
+    public float VelocityMagnitude { get { return _rb.velocity.magnitude; } }
+
     private void Awake() {
         _characterStats = GetComponent<CharacterStats>();
         _rb = GetComponentInChildren<Rigidbody>();
