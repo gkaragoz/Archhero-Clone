@@ -24,7 +24,7 @@ public class CharacterMotor : MonoBehaviour {
 
     private void FixedUpdate() {
         if (!_photonView.IsMine) {
-            _rb.MovePosition(Vector3.Lerp(transform.position, _remotePosition, Time.fixedDeltaTime * _characterStats.GetMovementSpeed()));
+            _rb.MovePosition(Vector3.Lerp(transform.position, _remotePosition, Time.fixedDeltaTime));
             _rb.MoveRotation(Quaternion.Lerp(transform.rotation, _remoteRotation, Time.fixedDeltaTime * _remoteRotationSpeed));
             _rb.velocity = _remoteVelocity;
         }
