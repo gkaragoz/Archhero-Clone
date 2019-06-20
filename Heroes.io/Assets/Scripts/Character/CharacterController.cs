@@ -46,10 +46,6 @@ public class CharacterController : MonoBehaviour {
         _characterMotor.SetRemotePosition(position);
     }
 
-    public void AddRemotePositionLag(float lag) {
-        _characterMotor.AddRemotePositionLag(lag);
-    }
-
     public void SetRemoteRotation(Quaternion rotation) {
         _characterMotor.SetRemoteRotation(rotation);
     }

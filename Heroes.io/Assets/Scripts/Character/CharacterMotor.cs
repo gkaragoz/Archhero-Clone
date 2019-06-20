@@ -46,10 +46,6 @@ public class CharacterMotor : MonoBehaviour {
         _remotePosition = position;
     }
 
-    public void AddRemotePositionLag(float lag) {
-        _remotePosition += (_rb.velocity * lag);
-    }
-
     public void SetRemoteRotation(Quaternion rotation) {
         _remoteRotation = rotation;
     }

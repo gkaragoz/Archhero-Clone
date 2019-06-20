@@ -73,10 +73,6 @@ public class PlayerController : MonoBehaviour {
         _characterController.SetRemotePosition(position);
     }
 
-    public void AddRemotePositionLag(float lag) {
-        _characterController.AddRemotePositionLag(lag);
-    }
-
     public void SetRemoteRotation(Quaternion rotation) {
         _characterController.SetRemoteRotation(rotation);
     }

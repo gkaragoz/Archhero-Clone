@@ -24,9 +24,6 @@ public class PlayerNetwork : MonoBehaviourPun, IPunObservable {
             _playerController.SetRemotePosition((Vector3)stream.ReceiveNext());
             _playerController.SetRemoteRotation((Quaternion)stream.ReceiveNext());
             _playerController.SetRemoteVelocity((Vector3)stream.ReceiveNext());
-
-            float lag = Mathf.Abs((float)(PhotonNetwork.Time - info.SentServerTime));
-            _playerController.AddRemotePositionLag(lag);
         }
     }
 
