@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2554d65e8b695314f830c80802247b6e, type: 3}
-  m_Name: BasicSwordman
+  m_Name: BasicArcher
   m_EditorClassIdentifier: 
-  _name: Basic Swordman
-  _prefab: {fileID: 8335044306195372946, guid: 8076c3fd01665904393324dc42ff3a8c, type: 3}
+  _name: Basic Archer
+  _prefab: {fileID: 2767747614286642145, guid: d54645a2e185d6d4ea8814feac0f0605, type: 3}
   _currentHealth: 100
   _maxHealth: 100
   _shootAngle: 45
