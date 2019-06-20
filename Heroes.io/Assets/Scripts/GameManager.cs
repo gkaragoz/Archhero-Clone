@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
 
     private void Start() {
         ObjectPooler.instance.InitializePool("OverlayHealthBar");
+        ObjectPooler.instance.InitializePool("Arrow");
     }
 
     public void InitializeOverlayHealthBars() {

@@ -7,9 +7,6 @@ public class CharacterController : MonoBehaviour {
     public Action<CharacterController> onDead;
     public Action onTakeDamage;
 
-    [SerializeField]
-    private GameObject _getDamageFX = null;
-
     private CharacterMotor _characterMotor;
     private CharacterAttack _characterAttack;
     private CharacterStats _characterStats;
@@ -62,12 +59,12 @@ public class CharacterController : MonoBehaviour {
         _characterMotor.RotateToLocalInput(input);
     }
 
-    public void FireGetDamageFX(Vector3 hitPoint) {
-        Instantiate(_getDamageFX, hitPoint, Quaternion.identity);
+    public void StartAttacking() {
+        _characterAttack.StartAttacking();
     }
 
-    public void Attack() {
-        _characterAttack.Attack();
+    public void StopAttacking() {
+        _characterAttack.StopAttacking();
     }
 
     public void TakeDamage(float amount) {
@@ -81,15 +78,6 @@ public class CharacterController : MonoBehaviour {
         //_SFXImpactFlesh.Play();
 
         onTakeDamage?.Invoke();
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Projectile") {
-            Vector3 hitPoint = new Vector3(other.transform.position.x, 0f, other.transform.position.z);
-            FireGetDamageFX(hitPoint);
-
-            Destroy(other.gameObject);
-        }
     }
 
 }

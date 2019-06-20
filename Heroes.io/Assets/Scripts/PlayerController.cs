@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            Attack();
+            StartAttacking();
         }
     }
 
@@ -89,8 +89,12 @@ public class PlayerController : MonoBehaviour {
         _characterController.RotateToLocalInput(CurrentInput);
     }
 
-    public void Attack() {
-        _characterController.Attack();
+    public void StartAttacking() {
+        _characterController.StartAttacking();
+    }
+
+    public void StopAttacking() {
+        _characterController.StopAttacking();
     }
 
     public void Destroy() {
