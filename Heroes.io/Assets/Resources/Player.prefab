@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9133527419201563823}
   - component: {fileID: 9133527419201563856}
+  - component: {fileID: 547746900969253166}
+  - component: {fileID: 9015135707994257441}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -44,9 +46,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bacc28886d31c14baf3ceed0a6f7447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _joystick: {fileID: 114567655231198891}
   _xInput: 0
   _yInput: 0
+  _characterController: {fileID: 0}
+  _joystick: {fileID: 114567655231198891}
+--- !u!114 &547746900969253166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133527419201563822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac91c81a2241d0946a88ecbdd62e6857, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9015135707994257441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9133527419201563822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 547746900969253166}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &817825637
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 563080190}
   - component: {fileID: 563080191}
   - component: {fileID: 563080189}
+  - component: {fileID: 563080192}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -585,9 +586,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3c054b748754244b91767ca38cf75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrfab: {fileID: 9133527419201563822, guid: d54645a2e185d6d4ea8814feac0f0605,
+  _playerPrefab: {fileID: 9133527419201563822, guid: d54645a2e185d6d4ea8814feac0f0605,
     type: 3}
   _players: []
+--- !u!114 &563080192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563080188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5ef6c44de43f74d975cf8a0595cf05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  username: Gokhan
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

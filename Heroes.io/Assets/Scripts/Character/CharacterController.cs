@@ -38,6 +38,14 @@ public class CharacterController : MonoBehaviour {
         return _characterMotor.GetCurrentRotation();
     }
 
+    public void SetRemoteInput(Vector2 input) {
+        _characterMotor.SetRemoteInput(input);
+    }
+
+    public void SetRemoteRotation(Quaternion rotation) {
+        _characterMotor.SetRemoteRotation(rotation);
+    }
+
     public void MoveToLocalInput(Vector2 input) {
         _characterMotor.MoveToLocalInput(input);
     }
