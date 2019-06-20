@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour {
             MoveToCurrentInput();
             RotateToCurrentInput();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Attack();
+        }
     }
 
     public Vector3 GetCurrentPosition() {
@@ -54,6 +58,10 @@ public class PlayerController : MonoBehaviour {
 
     public void RotateToCurrentInput() {
         _characterController.RotateToLocalInput(CurrentInput);
+    }
+
+    public void Attack() {
+        _characterController.Attack();
     }
 
     public void Destroy() {

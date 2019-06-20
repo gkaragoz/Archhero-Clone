@@ -7,6 +7,8 @@ public class CharacterAnimation : MonoBehaviour {
     private Animator _animator = null;
 
     private CharacterController _characterController;
+    private CharacterMotor _characterMotor;
+    private CharacterAttack _characterAttack;
 
     private const string VELOCITY_STATE = "Velocity";
     private const string DIE = "Die";
@@ -15,6 +17,14 @@ public class CharacterAnimation : MonoBehaviour {
 
     private void Awake() {
         _characterController = GetComponentInChildren<CharacterController>();
+        _characterMotor = GetComponentInChildren<CharacterMotor>();
+        _characterAttack = GetComponentInChildren<CharacterAttack>();
+
+        _characterAttack.onAttack += OnAttack;
+    }
+
+    private void OnDestroy() {
+        _characterAttack.onAttack -= OnAttack;
     }
 
     private void Update() {
@@ -23,10 +33,14 @@ public class CharacterAnimation : MonoBehaviour {
 
     public void OnMovement() {
         if (_characterController.IsMoving) {
-            _animator.SetFloat(VELOCITY_STATE, _characterController.VelocityMagnitude);
+            _animator.SetFloat(VELOCITY_STATE, _characterMotor.VelocityMagnitude);
         } else {
             _animator.SetFloat(VELOCITY_STATE, 0);
         }
+    }
+
+    public void OnAttack() {
+        _animator.SetTrigger(ATTACK);
     }
 
     public void OnDead(CharacterController characterController) {

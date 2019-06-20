@@ -11,7 +11,6 @@ public class CharacterController : MonoBehaviour {
     private CharacterStats _characterStats;
 
     public bool IsMoving { get { return _characterMotor.IsMoving; } }
-    public float VelocityMagnitude { get { return _characterMotor.VelocityMagnitude; } }
 
     private void Awake() {
         _characterMotor = GetComponent<CharacterMotor>();
@@ -37,6 +36,10 @@ public class CharacterController : MonoBehaviour {
 
     public void FireGetDamageFX(Vector3 hitPoint) {
         Instantiate(_getDamageFX, hitPoint, Quaternion.identity);
+    }
+
+    public void Attack() {
+        _characterAttack.Attack();
     }
 
     private void OnTriggerEnter(Collider other) {
