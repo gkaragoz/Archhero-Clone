@@ -34,7 +34,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks {
 
         string roomName = "Room " + Random.Range(1000, 10000);
 
-        RoomOptions options = new RoomOptions { MaxPlayers = 5 };
+        RoomOptions options = new RoomOptions { MaxPlayers = 2 };
 
         Debug.Log("roomName: " + roomName + "(" + options.MaxPlayers + ")");
         PhotonNetwork.CreateRoom(roomName, options, null);

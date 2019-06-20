@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviourPunCallbacks {
     [Header("Initialization")]
     [SerializeField]
     private GameObject _playerPrefab = null;
+    [SerializeField]
+    private Transform _redSpawnPoint = null;
+    [SerializeField]
+    private Transform _blueSpawnPoint = null;
 
     [Header("Debug")]
     [SerializeField]
@@ -62,7 +66,15 @@ public class GameManager : MonoBehaviourPunCallbacks {
 
     public override void OnJoinedRoom() {
         Debug.Log("OnJoinedRoom");
-        PlayerController newPlayer = PhotonNetwork.Instantiate(_playerPrefab.name, Vector3.zero, Quaternion.identity).GetComponent<PlayerController>();
+
+        Vector3 spawnPoint = Vector3.zero;
+        if (PhotonNetwork.CountOfPlayersInRooms == 0) {
+            spawnPoint = _redSpawnPoint.position;
+        } else {
+            spawnPoint = _blueSpawnPoint.position;
+        }
+
+        PlayerController newPlayer = PhotonNetwork.Instantiate(_playerPrefab.name, spawnPoint, Quaternion.identity).GetComponent<PlayerController>();
         _players.Add(newPlayer);
 
         InitializeOverlayHealthBars();
