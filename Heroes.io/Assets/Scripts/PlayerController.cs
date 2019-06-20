@@ -2,22 +2,25 @@
 
 public class PlayerController : MonoBehaviour {
 
-    [SerializeField]
-    private Joystick _joystick = null;
-
     public Vector2 CurrentInput { get; set; }
 
-    public bool HasInput {
-        get {
-            return (CurrentInput != Vector2.zero) ? true : false;
-        }
-    }
+    public bool HasInput { get { return (CurrentInput != Vector2.zero) ? true : false; } }
+
+    public CharacterController CharacterController { get { return _characterController; } }
 
     [Header("Debug")]
     [SerializeField]
     [Utils.ReadOnly]
-    private float _xInput, _yInput;
+    private float _xInput;
+    [SerializeField]
+    [Utils.ReadOnly]
+    private float _yInput;
+    [SerializeField]
+    [Utils.ReadOnly]
     private CharacterController _characterController;
+    [SerializeField]
+    [Utils.ReadOnly]
+    private Joystick _joystick = null;
 
     private void Awake() {
         _characterController = GetComponentInChildren<CharacterController>();
