@@ -6,7 +6,7 @@ public class CharacterMotor : MonoBehaviour {
 
     private Vector2 _remoteInput;
     private Quaternion _remoteRotation;
-    private float _remoteRotationSpeed = 4f;
+    private float _remoteRotationSpeed = 12f;
 
     private CharacterStats _characterStats;
     private Rigidbody _rb;
