@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterMotor), typeof(CharacterAttack), typeof(CharacterStats))]
 public class CharacterController : MonoBehaviour {
+
+    public Action<CharacterController> onDead;
+    public Action onTakeDamage;
 
     [SerializeField]
     private GameObject _getDamageFX = null;
@@ -11,11 +15,19 @@ public class CharacterController : MonoBehaviour {
     private CharacterStats _characterStats;
 
     public bool IsMoving { get { return _characterMotor.IsMoving; } }
+    public float CurrentHealth { get { return _characterStats.GetCurrentHealth(); } }
+    public float MaxHealth { get { return _characterStats.GetMaxHealth(); } }
 
     private void Awake() {
         _characterMotor = GetComponent<CharacterMotor>();
         _characterAttack = GetComponent<CharacterAttack>();
         _characterStats = GetComponent<CharacterStats>();
+    }
+
+    private void Die() {
+        onDead?.Invoke(this);
+
+        //_SFXEarnGolds.Play();
     }
 
     public Vector3 GetCurrentPosition() {
@@ -40,6 +52,19 @@ public class CharacterController : MonoBehaviour {
 
     public void Attack() {
         _characterAttack.Attack();
+    }
+
+    public void TakeDamage(float amount) {
+        _characterStats.DecreaseHealth(amount);
+
+        if (_characterStats.GetCurrentHealth() <= 0) {
+            Die();
+            return;
+        }
+
+        //_SFXImpactFlesh.Play();
+
+        onTakeDamage?.Invoke();
     }
 
     private void OnTriggerEnter(Collider other) {

@@ -10,7 +10,7 @@ public class OverlayHealthBar : Menu {
 
     private Camera _camera;
 
-    private UnityEngine.CharacterController _characterController;
+    private CharacterController _characterController;
 
     private void Awake() {
         _camera = Camera.main;
@@ -25,29 +25,23 @@ public class OverlayHealthBar : Menu {
         transform.position = _camera.WorldToScreenPoint(_characterController.transform.position + Vector3.up * _positionOffset);
     }
 
-    public void Initialize(UnityEngine.CharacterController characterController) {
+    public void Initialize(CharacterController characterController) {
         this._characterController = characterController;
 
-        //_characterController.onDead += OnDead;
-        //_characterController.onTakeDamage += OnTakeDamage;
-        //_characterController.onReused += OnReused;
+        _characterController.onDead += OnDead;
+        _characterController.onTakeDamage += OnTakeDamage;
 
-        //_slider.maxValue = _characterController.MaxHealth;
-        //_slider.value = _characterController.CurrentHealth;
-    }
-
-    private void OnReused() {
-        //_slider.maxValue = _characterController.MaxHealth;
-        //_slider.value = _characterController.CurrentHealth;
+        _slider.maxValue = _characterController.MaxHealth;
+        _slider.value = _characterController.CurrentHealth;
 
         Show();
     }
 
     private void OnTakeDamage() {
-        //_slider.value = _characterController.CurrentHealth;
+        _slider.value = _characterController.CurrentHealth;
     }
 
-    private void OnDead(UnityEngine.CharacterController character) {
+    private void OnDead(CharacterController character) {
         Hide();
     }
 
