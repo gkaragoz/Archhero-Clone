@@ -24,7 +24,7 @@ public class CharacterMotor : MonoBehaviour {
     private void FixedUpdate() {
         if (!_photonView.IsMine) {
             ProcessRemoteInput();
-            //ProcessRemoteRotation();
+            ProcessRemoteRotation();
         }
     }
 
