@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviourPunCallbacks {
         Debug.Log("OnPlayerPropertiesUpdate: (" + target.UserId + ")");
 
         if (changedProps.ContainsKey(GameVariables.PLAYER_HEALTH_FIELD)) {
-            check if owned character has been died
+            //check if owned character has been died
             return;
         }
     }
