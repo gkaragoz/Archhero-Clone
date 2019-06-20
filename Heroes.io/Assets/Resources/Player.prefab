@@ -418,7 +418,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileSpawnTransform: {fileID: 2877879186752461146}
-  _targetTransform: {fileID: 0}
   _nextAttack: 0
   _isAttacking: 0
 --- !u!114 &-5426374403272042696

@@ -10,6 +10,8 @@ public class CharacterMotor : MonoBehaviour {
     private float _remoteRotationSpeed = 12f;
 
     private CharacterStats _characterStats;
+    private CharacterAttack _characterAttack;
+    private CharacterTargetSelector _characterTargetSelector;
     private Rigidbody _rb;
     private PhotonView _photonView;
 
@@ -18,8 +20,12 @@ public class CharacterMotor : MonoBehaviour {
 
     private void Awake() {
         _characterStats = GetComponent<CharacterStats>();
+        _characterAttack = GetComponent<CharacterAttack>();
+        _characterTargetSelector = GetComponent<CharacterTargetSelector>();
         _rb = GetComponent<Rigidbody>();
         _photonView = GetComponent<PhotonView>();
+
+        _characterAttack.onAttack += LookToTarget;
     }
 
     private void FixedUpdate() {
@@ -27,6 +33,19 @@ public class CharacterMotor : MonoBehaviour {
             _rb.MovePosition(Vector3.Lerp(transform.position, _remotePosition, Time.fixedDeltaTime));
             _rb.MoveRotation(Quaternion.Lerp(transform.rotation, _remoteRotation, Time.fixedDeltaTime * _remoteRotationSpeed));
             _rb.velocity = _remoteVelocity;
+        }
+    }
+
+    private void LookToTarget() {
+        if (_characterTargetSelector.HasTarget) {
+            Vector3 desiredLookPosition = _characterTargetSelector.SelectedTarget.transform.position - transform.position;
+            desiredLookPosition.y = 0;
+
+            if (desiredLookPosition != Vector3.zero) {
+                Quaternion rotation = Quaternion.LookRotation(desiredLookPosition);
+
+                _rb.MoveRotation(rotation);
+            }
         }
     }
 

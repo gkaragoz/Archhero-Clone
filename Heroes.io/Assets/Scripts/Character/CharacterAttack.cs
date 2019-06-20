@@ -13,9 +13,6 @@ public class CharacterAttack : MonoBehaviour {
     [Header("Debug")]
     [SerializeField]
     [Utils.ReadOnly]
-    private Transform _targetTransform = null;
-    [SerializeField]
-    [Utils.ReadOnly]
     private float _nextAttack = 0;
     [SerializeField]
     [Utils.ReadOnly]
