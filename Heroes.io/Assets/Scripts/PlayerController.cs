@@ -65,12 +65,24 @@ public class PlayerController : MonoBehaviour {
         return _characterController.GetCurrentRotation();
     }
 
-    public void SetRemoteInput(Vector2 input) {
-        _characterController.SetRemoteInput(input);
+    public Vector3 GetCurrentVelocity() {
+        return _characterController.GetCurrentVelocity();
+    }
+
+    public void SetRemotePosition(Vector3 position) {
+        _characterController.SetRemotePosition(position);
+    }
+
+    public void AddRemotePositionLag(float lag) {
+        _characterController.AddRemotePositionLag(lag);
     }
 
     public void SetRemoteRotation(Quaternion rotation) {
         _characterController.SetRemoteRotation(rotation);
+    }
+
+    public void SetRemoteVelocity(Vector3 velocity) {
+        _characterController.SetRemoteVelocity(velocity);
     }
 
     public void MoveToCurrentInput() {

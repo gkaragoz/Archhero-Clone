@@ -33,7 +33,7 @@ public class CharacterAnimation : MonoBehaviour {
 
     public void OnMovement() {
         if (_characterController.IsMoving) {
-            _animator.SetFloat(VELOCITY_STATE, _characterMotor.VelocityMagnitude);
+            _animator.SetFloat(VELOCITY_STATE, _characterMotor.VelocityMagnitude, 0.1f, Time.deltaTime);
         } else {
             _animator.SetFloat(VELOCITY_STATE, 0);
         }
