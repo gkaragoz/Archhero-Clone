@@ -84,10 +84,10 @@ public class GameManager : MonoBehaviourPunCallbacks {
     public override void OnPlayerPropertiesUpdate(Player target, Hashtable changedProps) {
         Debug.Log("OnPlayerPropertiesUpdate: (" + target.UserId + ")");
 
-        //if (changedProps.ContainsKey(GameVariables.PLAYER_HEALTH_FIELD)) {
-            //check if owned character has been died 
-            //return;
-        //}
+        if (changedProps.ContainsKey(GameVariables.PLAYER_HEALTH_FIELD)) {
+            check if owned character has been died
+            return;
+        }
     }
 
     public override void OnDisconnected(DisconnectCause cause) {
