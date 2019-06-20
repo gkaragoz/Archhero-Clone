@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 119904466}
   - component: {fileID: 119904465}
   - component: {fileID: 119904464}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -774,6 +774,7 @@ GameObject:
   - component: {fileID: 563080191}
   - component: {fileID: 563080189}
   - component: {fileID: 563080192}
+  - component: {fileID: 563080193}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -841,6 +842,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   username: Gokhan
+--- !u!114 &563080193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563080188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5867a53c8db0e6745818285bb6b6e1b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 0
+    y: 100
+    width: 120
+    height: 100
+  WindowId: 101
+  Visible: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
