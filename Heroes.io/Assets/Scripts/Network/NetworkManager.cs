@@ -10,9 +10,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks {
         username = "Player " + Random.Range(1000, 10000);
 
         PhotonNetwork.LocalPlayer.NickName = username;
-        PhotonNetwork.ConnectUsingSettings();
-
         PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.SendRate = 10;
+        PhotonNetwork.SerializationRate = 10;
+
+        PhotonNetwork.ConnectUsingSettings();
     }
 
     public override void OnConnectedToMaster() {
@@ -32,7 +34,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks {
 
         string roomName = "Room " + Random.Range(1000, 10000);
 
-        RoomOptions options = new RoomOptions { MaxPlayers = 2 };
+        RoomOptions options = new RoomOptions { MaxPlayers = 5 };
 
         Debug.Log("roomName: " + roomName + "(" + options.MaxPlayers + ")");
         PhotonNetwork.CreateRoom(roomName, options, null);
