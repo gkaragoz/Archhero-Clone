@@ -219,7 +219,12 @@ ModelImporter:
   - first:
       137: 13700000
     second: micro_dragon
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: micro_dragon_clean_lambert7
+    second: {fileID: 2100000, guid: 42d56be5e582fe84099b150688f75d2e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -239,7 +244,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -250,7 +255,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_bind
       takeName: 
-      internalID: 0
+      internalID: 7400036
       firstFrame: 1
       lastFrame: 5
       wrapMode: 0
@@ -279,7 +284,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_idle
       takeName: 
-      internalID: 0
+      internalID: 7400038
       firstFrame: 6
       lastFrame: 60
       wrapMode: 2
@@ -288,7 +293,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -308,7 +313,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_bite
       takeName: 
-      internalID: 0
+      internalID: 7400040
       firstFrame: 61
       lastFrame: 80
       wrapMode: 0
@@ -337,7 +342,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_hit_front
       takeName: 
-      internalID: 0
+      internalID: 7400070
       firstFrame: 81
       lastFrame: 100
       wrapMode: 0
@@ -366,7 +371,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_hit_left
       takeName: 
-      internalID: 0
+      internalID: 7400072
       firstFrame: 101
       lastFrame: 120
       wrapMode: 0
@@ -395,7 +400,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_hit_right
       takeName: 
-      internalID: 0
+      internalID: 7400074
       firstFrame: 121
       lastFrame: 140
       wrapMode: 0
@@ -424,7 +429,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_panic
       takeName: 
-      internalID: 0
+      internalID: 7400048
       firstFrame: 141
       lastFrame: 210
       wrapMode: 0
@@ -453,7 +458,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_swoop_down
       takeName: 
-      internalID: 0
+      internalID: 7400050
       firstFrame: 211
       lastFrame: 250
       wrapMode: 0
@@ -482,7 +487,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_loop_da_loop
       takeName: 
-      internalID: 0
+      internalID: 7400052
       firstFrame: 251
       lastFrame: 270
       wrapMode: 0
@@ -511,7 +516,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_land_on_ground
       takeName: 
-      internalID: 0
+      internalID: 7400054
       firstFrame: 271
       lastFrame: 310
       wrapMode: 0
@@ -540,7 +545,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_die
       takeName: 
-      internalID: 0
+      internalID: 7400076
       firstFrame: 311
       lastFrame: 346
       wrapMode: 0
@@ -569,7 +574,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_stirr_on_ground
       takeName: 
-      internalID: 0
+      internalID: 7400058
       firstFrame: 347
       lastFrame: 446
       wrapMode: 0
@@ -598,7 +603,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_take_off
       takeName: 
-      internalID: 0
+      internalID: 7400060
       firstFrame: 447
       lastFrame: 511
       wrapMode: 0
@@ -627,7 +632,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_attack_repeatedly
       takeName: 
-      internalID: 0
+      internalID: 7400062
       firstFrame: 512
       lastFrame: 559
       wrapMode: 0
@@ -656,7 +661,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_dizzy
       takeName: 
-      internalID: 0
+      internalID: 7400064
       firstFrame: 560
       lastFrame: 650
       wrapMode: 0
@@ -685,7 +690,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_talk
       takeName: 
-      internalID: 0
+      internalID: 7400066
       firstFrame: 651
       lastFrame: 728
       wrapMode: 0
@@ -714,7 +719,7 @@ ModelImporter:
     - serializedVersion: 16
       name: dragon_laugh
       takeName: 
-      internalID: 0
+      internalID: 7400068
       firstFrame: 729
       lastFrame: 791
       wrapMode: 0
@@ -772,7 +777,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 4
     normalCalculationMode: 0
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
@@ -792,10 +797,10 @@ ModelImporter:
     globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 1
   userData: 
