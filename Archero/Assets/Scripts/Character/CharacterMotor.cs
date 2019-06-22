@@ -8,7 +8,7 @@ public class CharacterMotor : MonoBehaviour {
     private CharacterTargetSelector _characterTargetSelector;
     private Rigidbody _rb;
 
-    public bool IsMoving { get { return _rb.velocity.magnitude > 0f ? true : false; } }
+    public bool IsMoving { get { return _rb.velocity.magnitude > 0.01f ? true : false; } }
     public float VelocityMagnitude { get { return _rb.velocity.magnitude; } }
 
     private void Awake() {
@@ -16,8 +16,12 @@ public class CharacterMotor : MonoBehaviour {
         _characterAttack = GetComponent<CharacterAttack>();
         _characterTargetSelector = GetComponent<CharacterTargetSelector>();
         _rb = GetComponent<Rigidbody>();
+    }
 
-        _characterAttack.onAttackStarted += LookToTarget;
+    private void Update() {
+        if (_characterAttack.IsAttacking) {
+            LookToTarget();
+        }
     }
 
     private void LookToTarget() {

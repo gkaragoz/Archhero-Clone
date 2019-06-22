@@ -10,15 +10,12 @@ public class CharacterAttack : MonoBehaviour {
     [Header("Initialization")]
     [SerializeField]
     private Transform _projectileSpawnTransform = null;
-
-    private bool _isAttacking = false;
-
     private CharacterStats _characterStats;
     private CharacterController _characterController;
     private CharacterMotor _characterMotor;
     private CharacterTargetSelector _characterTargetSelector;
 
-    public bool IsAttacking { get { return _isAttacking; } }
+    public bool IsAttacking { get; private set; }
 
     private void Awake() {
         _characterController = GetComponent<CharacterController>();
@@ -27,19 +24,23 @@ public class CharacterAttack : MonoBehaviour {
         _characterTargetSelector = GetComponent<CharacterTargetSelector>();
     }
 
+    private void Update() {
+        if (IsAttacking) {
+            _characterTargetSelector.SearchTarget();
+        }
+    }
+
     /// <summary>
     /// This function triggered from AnimationTrigger that attachted animator component.
     /// <see cref="AnimationTrigger"/>
     /// </summary>
     public void AttackEvent() {
-        if (!_isAttacking) {
+        if (!IsAttacking) {
             Debug.Log("Attacking is interrupted.");
             return;
         }
 
         Debug.Log("Attacked");
-
-        _characterTargetSelector.SearchTarget();
 
         // Initialize projectile physics.
         Projectile projectile = ObjectPooler.instance.SpawnFromPool("Arrow", _projectileSpawnTransform.position, Quaternion.identity).GetComponent<Projectile>();
@@ -53,13 +54,13 @@ public class CharacterAttack : MonoBehaviour {
     }
 
     public void StartAttacking() {
-        _isAttacking = true;
+        IsAttacking = true;
 
         onAttackStarted?.Invoke();
     }
 
     public void StopAttacking() {
-        _isAttacking = false;
+        IsAttacking = false;
 
         onAttackStopped?.Invoke();
     }
