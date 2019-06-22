@@ -17,7 +17,7 @@ public class CharacterMotor : MonoBehaviour {
         _characterTargetSelector = GetComponent<CharacterTargetSelector>();
         _rb = GetComponent<Rigidbody>();
 
-        _characterAttack.onAttack += LookToTarget;
+        _characterAttack.onAttackStarted += LookToTarget;
     }
 
     private void LookToTarget() {

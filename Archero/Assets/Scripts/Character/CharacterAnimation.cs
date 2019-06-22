@@ -13,18 +13,15 @@ public class CharacterAnimation : MonoBehaviour {
     private const string VELOCITY_STATE = "Velocity";
     private const string DIE = "Die";
     private const string DEAD_SELECTOR = "INT_DeadSelector";
-    private const string ATTACK = "Attack";
+    private const string IS_ATTACKING = "IsAttacking";
 
     private void Awake() {
         _characterController = GetComponentInChildren<CharacterController>();
         _characterMotor = GetComponentInChildren<CharacterMotor>();
         _characterAttack = GetComponentInChildren<CharacterAttack>();
 
-        _characterAttack.onAttack += OnAttack;
-    }
-
-    private void OnDestroy() {
-        _characterAttack.onAttack -= OnAttack;
+        _characterAttack.onAttackStarted += OnAttackStarted;
+        _characterAttack.onAttackStopped += OnAttackStopped;
     }
 
     private void Update() {
@@ -39,8 +36,14 @@ public class CharacterAnimation : MonoBehaviour {
         }
     }
 
-    public void OnAttack() {
-        _animator.SetTrigger(ATTACK);
+    public void OnAttackStarted() {
+        Debug.Log("Set IsAttacking true");
+        _animator.SetBool(IS_ATTACKING, true);
+    }
+
+    public void OnAttackStopped() {
+        Debug.Log("Set IsAttacking false");
+        _animator.SetBool(IS_ATTACKING, false);
     }
 
     public void OnDead(CharacterController characterController) {

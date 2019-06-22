@@ -4,18 +4,13 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterStats))]
 public class CharacterAttack : MonoBehaviour {
 
-    public Action onAttack;
+    public Action onAttackStarted;
+    public Action onAttackStopped;
 
     [Header("Initialization")]
     [SerializeField]
     private Transform _projectileSpawnTransform = null;
 
-    [Header("Debug")]
-    [SerializeField]
-    [Utils.ReadOnly]
-    private float _nextAttack = 0;
-    [SerializeField]
-    [Utils.ReadOnly]
     private bool _isAttacking = false;
 
     private CharacterStats _characterStats;
@@ -32,29 +27,19 @@ public class CharacterAttack : MonoBehaviour {
         _characterTargetSelector = GetComponent<CharacterTargetSelector>();
     }
 
-    private void Update() {
-        if (_characterController.IsMoving && _isAttacking) {
-            StopAttacking();
+    /// <summary>
+    /// This function triggered from AnimationTrigger that attachted animator component.
+    /// <see cref="AnimationTrigger"/>
+    /// </summary>
+    public void AttackEvent() {
+        if (!_isAttacking) {
+            Debug.Log("Attacking is interrupted.");
             return;
         }
 
-        if (_isAttacking) {
-            Attack();
-        }
-    }
-
-    private void Attack() {
-        _isAttacking = true;
+        Debug.Log("Attacked");
 
         _characterTargetSelector.SearchTarget();
-
-        if (Time.time <= _nextAttack) {
-            return;
-        }
-
-        _nextAttack = Time.time + _characterStats.GetAttackRate();
-
-        onAttack?.Invoke();
 
         // Initialize projectile physics.
         Projectile projectile = ObjectPooler.instance.SpawnFromPool("Arrow", _projectileSpawnTransform.position, Quaternion.identity).GetComponent<Projectile>();
@@ -69,10 +54,14 @@ public class CharacterAttack : MonoBehaviour {
 
     public void StartAttacking() {
         _isAttacking = true;
+
+        onAttackStarted?.Invoke();
     }
 
     public void StopAttacking() {
         _isAttacking = false;
+
+        onAttackStopped?.Invoke();
     }
 
 }

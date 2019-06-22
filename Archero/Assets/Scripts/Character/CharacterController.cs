@@ -21,6 +21,16 @@ public class CharacterController : MonoBehaviour {
         _characterStats = GetComponent<CharacterStats>();
     }
 
+    private void Update() {
+        if (IsMoving && _characterAttack.IsAttacking) {
+            Debug.Log("Stop Attacking.");
+            StopAttacking();
+        } else if (!IsMoving && !_characterAttack.IsAttacking) {
+            Debug.Log("Start Attacking.");
+            StartAttacking();
+        }
+    }
+
     private void Die() {
         onDead?.Invoke(this);
 

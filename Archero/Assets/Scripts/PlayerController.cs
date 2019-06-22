@@ -41,10 +41,6 @@ public class PlayerController : MonoBehaviour {
             MoveToCurrentInput();
             RotateToCurrentInput();
         }
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            StartAttacking();
-        }
     }
 
     public void DestroyJoystick() {
