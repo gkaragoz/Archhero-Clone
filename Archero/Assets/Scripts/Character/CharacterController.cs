@@ -39,24 +39,12 @@ public class CharacterController : MonoBehaviour {
         return _characterMotor.GetCurrentVelocity();
     }
 
-    public void SetRemotePosition(Vector3 position) {
-        _characterMotor.SetRemotePosition(position);
+    public void MoveToInput(Vector2 input) {
+        _characterMotor.MoveToInput(input);
     }
 
-    public void SetRemoteRotation(Quaternion rotation) {
-        _characterMotor.SetRemoteRotation(rotation);
-    }
-
-    public void SetRemoteVelocity(Vector3 velocity) {
-        _characterMotor.SetRemoteVelocity(velocity);
-    }
-
-    public void MoveToLocalInput(Vector2 input) {
-        _characterMotor.MoveToLocalInput(input);
-    }
-
-    public void RotateToLocalInput(Vector2 input) {
-        _characterMotor.RotateToLocalInput(input);
+    public void RotateToInput(Vector2 input) {
+        _characterMotor.RotateToInput(input);
     }
 
     public void StartAttacking() {

@@ -307,9 +307,7 @@ GameObject:
   - component: {fileID: 8623346512149509499}
   - component: {fileID: -5426374403272042696}
   - component: {fileID: 7000524425299449512}
-  - component: {fileID: 738151593567451716}
   - component: {fileID: 8274999727094672807}
-  - component: {fileID: 6462011491373861225}
   m_Layer: 8
   m_Name: Player
   m_TagString: Enemy
@@ -446,18 +444,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 4639175995926055154}
---- !u!114 &738151593567451716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2767747614286642145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac91c81a2241d0946a88ecbdd62e6857, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8274999727094672807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,28 +460,6 @@ MonoBehaviour:
   _yInput: 0
   _characterController: {fileID: 0}
   _joystick: {fileID: 6734132679591629522}
---- !u!114 &6462011491373861225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2767747614286642145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 738151593567451716}
-  viewIdField: 0
-  InstantiationId: 1
-  isRuntimeInstantiated: 0
 --- !u!1 &7421077448003194217
 GameObject:
   m_ObjectHideFlags: 0

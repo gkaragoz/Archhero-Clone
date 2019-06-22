@@ -1,10 +1,7 @@
-﻿using ExitGames.Client.Photon;
-using Photon.Pun;
-using Photon.Realtime;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviourPunCallbacks {
+public class GameManager : MonoBehaviour {
 
     #region Singleton
 
@@ -22,10 +19,6 @@ public class GameManager : MonoBehaviourPunCallbacks {
     [Header("Initialization")]
     [SerializeField]
     private GameObject _playerPrefab = null;
-    [SerializeField]
-    private Transform _redSpawnPoint = null;
-    [SerializeField]
-    private Transform _blueSpawnPoint = null;
 
     [Header("Debug")]
     [SerializeField]
@@ -36,6 +29,11 @@ public class GameManager : MonoBehaviourPunCallbacks {
     private void Start() {
         ObjectPooler.instance.InitializePool("OverlayHealthBar");
         ObjectPooler.instance.InitializePool("Arrow");
+
+        Vector3 spawnPosition = new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f));
+        _players.Add(Instantiate(_playerPrefab, spawnPosition, Quaternion.identity).GetComponent<PlayerController>());
+
+        InitializeOverlayHealthBars();
     }
 
     public void InitializeOverlayHealthBars() {
@@ -52,61 +50,5 @@ public class GameManager : MonoBehaviourPunCallbacks {
 
         Debug.Log("[POOL OVERLAY HEALTH BARS]" + " have been initialized.");
     }
-
-    public PlayerController GetPlayer(Player player) {
-        var playerList = GameObject.FindObjectsOfType<PlayerNetwork>();
-        for (int ii = 0; ii < playerList.Length; ii++) {
-            if (player == playerList[ii].photonView.Owner) {
-                return playerList[ii].GetComponent<PlayerController>();
-            }
-        }
-        return null;
-    }
-
-    #region Pun Callbacks
-
-    public override void OnJoinedRoom() {
-        Debug.Log("OnJoinedRoom");
-
-        Vector3 spawnPoint = Vector3.zero;
-        if (PhotonNetwork.CountOfPlayersInRooms == 0) {
-            spawnPoint = _redSpawnPoint.position;
-        } else {
-            spawnPoint = _blueSpawnPoint.position;
-        }
-
-        PlayerController newPlayer = PhotonNetwork.Instantiate(_playerPrefab.name, spawnPoint, Quaternion.identity).GetComponent<PlayerController>();
-        _players.Add(newPlayer);
-
-        InitializeOverlayHealthBars();
-    }
-
-    public override void OnLeftRoom() {
-        Debug.Log("OnLeftRoom");
-        PhotonNetwork.Disconnect();
-    }
-
-    public override void OnPlayerEnteredRoom(Player newPlayer) {
-        Debug.Log("OnPlayerEnteredRoom: (" + newPlayer.UserId + ")" + newPlayer.NickName);
-    }
-
-    public override void OnPlayerLeftRoom(Player otherPlayer) {
-        Debug.Log("OnPlayerLeftRoom: (" + otherPlayer.UserId + ")" + otherPlayer.NickName);
-    }
-
-    public override void OnPlayerPropertiesUpdate(Player target, Hashtable changedProps) {
-        Debug.Log("OnPlayerPropertiesUpdate: (" + target.UserId + ")");
-
-        if (changedProps.ContainsKey(GameVariables.PLAYER_HEALTH_FIELD)) {
-            //check if owned character has been died
-            return;
-        }
-    }
-
-    public override void OnDisconnected(DisconnectCause cause) {
-        Debug.Log(cause);
-    }
-
-    #endregion
 
 }

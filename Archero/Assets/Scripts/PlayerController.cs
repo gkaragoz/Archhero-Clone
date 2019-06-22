@@ -2,8 +2,6 @@
 
 public class PlayerController : MonoBehaviour {
 
-    public bool IsRemotePlayer { get; set; }
-
     public Vector2 CurrentInput { get; set; }
 
     public bool HasInput { get { return (CurrentInput != Vector2.zero) ? true : false; } }
@@ -29,10 +27,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        if (IsRemotePlayer) {
-            return;
-        }
-
         if (_joystick == null) {
             Debug.Log("Joystick is missing!");
             return;
@@ -69,24 +63,12 @@ public class PlayerController : MonoBehaviour {
         return _characterController.GetCurrentVelocity();
     }
 
-    public void SetRemotePosition(Vector3 position) {
-        _characterController.SetRemotePosition(position);
-    }
-
-    public void SetRemoteRotation(Quaternion rotation) {
-        _characterController.SetRemoteRotation(rotation);
-    }
-
-    public void SetRemoteVelocity(Vector3 velocity) {
-        _characterController.SetRemoteVelocity(velocity);
-    }
-
     public void MoveToCurrentInput() {
-        _characterController.MoveToLocalInput(CurrentInput);
+        _characterController.MoveToInput(CurrentInput);
     }
 
     public void RotateToCurrentInput() {
-        _characterController.RotateToLocalInput(CurrentInput);
+        _characterController.RotateToInput(CurrentInput);
     }
 
     public void StartAttacking() {
